@@ -1,6 +1,6 @@
 // Import packages
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink  } from 'react-router-dom'
 
 // Icons
 import IBW from '../src/assets/icons/IBW.png'
@@ -9,7 +9,7 @@ const Sidebar = () => {
     return (
         <nav className='sideBar'>
             <NavLink to="/home">
-                <img src={IBW} Linkt="IBW Logo" className='IBWImg' />
+                <img src={IBW} alt="IBW Logo" className='IBWImg' />
             </NavLink>
 
             {/* First group of links */}
@@ -35,7 +35,7 @@ const Sidebar = () => {
             {/* Second group of links */}
             <ul className='flex flex-col gap-4 w-full h-fit'>
                 <li className="flex justify-center">
-                    <NavLink to="/orders" className={({ isActive }) => isActive ? 'text-blue-600 tile' : 'tile'}>
+                    <NavLink to="/dashboard#previous-orders" className={({ isActive }) => isActive ? 'text-blue-600 tile' : 'tile'}>
                         Orders
                     </NavLink>
                 </li>
