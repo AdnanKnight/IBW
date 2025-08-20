@@ -11,10 +11,12 @@ import AdminLayout from '../layouts/adminLayout'
 // Pages
 import Home from '../pages/home';
 import ProductPage from '../pages/productPage';
-import ErrorPage from '../pages/errorPage';
 import DashBoard from '../pages/admin/dashBoard';
 import UserDashBoard from '../pages/userDashboard'
 
+import ErrorPage from '../pages/errorPage';
+import ErrorProduct from '../pages/errorProduct';
+import ErrorAdmin from '../pages/errorAdmin.jsx';
 
 function App() {
 
@@ -30,16 +32,15 @@ function App() {
 
         <Route path="/viewproduct/:id" element={<MainLayout />}>
           <Route index element={<ProductPage />} />
-          <Route path='*' element={<ErrorPage />} />
+          <Route path='*' element={<ErrorProduct />} />
         </Route>
 
         <Route path="/admin" element={<AdminLayout />}>
           <Route path='' element={<DashBoard />} />
-          <Route path='*' element={<ErrorPage />} />
+          <Route path='*' element={<ErrorAdmin />} />
         </Route>
 
         <Route path='*' element={<ErrorPage />} />
-
       </Routes>
     </>
   )
