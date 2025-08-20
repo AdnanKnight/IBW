@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams } from 'react-router-dom';
 
 import Products from '../components/products';
@@ -11,7 +10,7 @@ const productPage = () => {
     return (
         <div className='py-10 px-7'>
             <div className='productSection rounded-xl bg-gray-200'>
-                <div className='w-full h-[50dvh] flex justify-around items-center px-15'>
+                <div id='productProfile' className='w-full h-[50dvh] flex justify-around items-center px-15'>
                     <img src={DefaultAvatar} alt="user Image" className='w-[47%] h-[80%] rounded-lg bg-gray-400 text-center object-cover' />
                     <span className='w-[45%] h-[80%] flex flex-col justify-center'>
                         <h3 className='text-3xl font-bold'>Product Name : {id}</h3>

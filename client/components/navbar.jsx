@@ -11,7 +11,7 @@ const navbar = () => {
           <NavLink to="/dashboard" className={({ isActive }) => isActive ? 'w-[50%] h-full flex justify-center items-center text-center rounded-[20px] bg-[var(--accent-light)]' : 'w-[50%] h-full flex justify-center items-center text-center'}>Dashboard</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard" >
+          <NavLink to="/dashboard#user-details" >
             <i className="ri-account-pin-circle-line text-xl miniUITile"></i>
           </NavLink>
         </li>

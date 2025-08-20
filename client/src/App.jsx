@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import './main.css'
 
+import ScrollToTop from '../components/scrollToTop'
+
 // Layouts
 import MainLayout from '../layouts/mainLayout'
 import AdminLayout from '../layouts/adminLayout'
@@ -18,6 +20,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />

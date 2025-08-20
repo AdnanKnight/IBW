@@ -7,7 +7,7 @@ const userDashboard = () => {
     return (
         <div className='py-10 px-7'>
             <div className='profileSection'>
-                <div className='w-[49%] h-[30dvh] bg-gray-200 rounded-xl flex justify-around items-center px-15'>
+                <div id='user-details' className='w-[49%] h-[30dvh] bg-gray-200 rounded-xl flex justify-around items-center px-15'>
                     <img src={DefaultAvatar} alt="user Image" className='w-[200px] h-[200px] rounded-[50%] bg-gray-200 text-center object-cover' />
                     <span>
                         <h3 className='text-3xl font-bold'>Welcome back,</h3>
@@ -26,7 +26,7 @@ const userDashboard = () => {
                     </span>
                 </div>
             </div>
-            <div className="orderSection mt-10 py-10 px-15 bg-gray-200 rounded-xl" id='previous-orders'>
+            <div className="orderSection mt-10 py-10 px-15 bg-gray-200 rounded-xl" id='cart'>
                 <h3 className='text-2xl font-bold mb-5'>Cart</h3>
                 <div className="orderList w-full flex flex-col gap-[15px]">
                     <li className='w-full flex justify-between border-[1px] border-[var(--accent-dark)] py-3 px-2 rounded-lg'>Order No. 1 <span>total-Items</span> <span>Total-price</span></li>
