@@ -27,6 +27,14 @@ const userDashboard = () => {
                 </div>
             </div>
             <div className="orderSection mt-10 py-10 px-15 bg-gray-200 rounded-xl" id='previous-orders'>
+                <h3 className='text-2xl font-bold mb-5'>Cart</h3>
+                <div className="orderList w-full flex flex-col gap-[15px]">
+                    <li className='w-full flex justify-between border-[1px] border-[var(--accent-dark)] py-3 px-2 rounded-lg'>Order No. 1 <span>total-Items</span> <span>Total-price</span></li>
+                    <li className='w-full flex justify-between border-[1px] border-[var(--accent-dark)] py-3 px-2 rounded-lg'>Order No. 2 <span>total-Items</span> <span>Total-price</span></li>
+                    <li className='w-full flex justify-between border-[1px] border-[var(--accent-dark)] py-3 px-2 rounded-lg'>Order No. 3 <span>total-Items</span> <span>Total-price</span></li>
+                </div>
+            </div>
+            <div className="orderSection mt-10 py-10 px-15 bg-gray-200 rounded-xl" id='previous-orders'>
                 <h3 className='text-2xl font-bold mb-5'>Previous Orders</h3>
                 <div className="orderList w-full flex flex-col gap-[15px]">
                     <li className='w-full flex justify-between border-[1px] border-[var(--accent-dark)] py-3 px-2 rounded-lg'>Order No. 1 <span>total-Items</span> <span>Total-price</span></li>

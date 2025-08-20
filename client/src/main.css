@@ -149,9 +149,7 @@ body {
 
 .footerContainer {
   width: 100%;
-  height: 150px;
-
-  background-color: var(--yellow);
+  height: fit-content;
 
   position: relative;
 }
@@ -188,6 +186,23 @@ body {
 }
 
 .orderSection {
+  width: 100;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.productSection {
+  width: 100;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+}
+.recommendedProductSection {
   width: 100;
 
   display: flex;
