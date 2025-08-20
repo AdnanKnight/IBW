@@ -1,66 +1,143 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 
 const Admin = () => {
-    const [products, setProducts] = useState([]);
-    const [ads, setAds] = useState([]);
-    const [productForm, setProductForm] = useState({ name: '', price: '', description: '' });
-    const [adForm, setAdForm] = useState({ title: '', image: '', link: '' });
+    // const [ads, setAds] = useState([]);
+    const [sales, setSales] = useState([]);
+    // const [products, setProducts] = useState([]);
+    // const [productForm, setProductForm] = useState({ name: '', price: '', description: '' });
+    // const [adForm, setAdForm] = useState({ title: '', image: '', link: '' });
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-    
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
+
     const API_BASE = 'http://localhost:5555/api';
 
-    const fetchData = async () => {
-        const prodRes = await axios.get(`${API_BASE}/products`);
-        const adsRes = await axios.get(`${API_BASE}/ads`);
-        setProducts(prodRes.data);
-        setAds(adsRes.data);
-    };
+    // const fetchData = async () => {
+    //     const prodRes = await axios.get(`${API_BASE}/products`);
+    //     const adsRes = await axios.get(`${API_BASE}/ads`);
+    //     setProducts(prodRes.data);
+    //     setAds(adsRes.data);
+    // };
 
-    const handleProductCreate = async () => {
-        try {
-            await axios.post(`${API_BASE}/products`, productForm);
-            setProductForm({ name: '', price: '', description: '' });
-            await fetchData();
-            alert("✅ Product added successfully!");
-        } catch (error) {
-            console.error("Product creation failed:", error);
-            alert("❌ Failed to add product.");
-        }
-    };
+    // const handleProductCreate = async () => {
+    //     try {
+    //         await axios.post(`${API_BASE}/products`, productForm);
+    //         setProductForm({ name: '', price: '', description: '' });
+    //         await fetchData();
+    //         alert("✅ Product added successfully!");
+    //     } catch (error) {
+    //         console.error("Product creation failed:", error);
+    //         alert("❌ Failed to add product.");
+    //     }
+    // };
 
-    const handleAdCreate = async () => {
-        try {
-            await axios.post(`${API_BASE}/ads`, adForm);
-            setAdForm({ title: '', image: '', link: '' });
-            await fetchData();
-            alert("✅ Ad created successfully!");
-        } catch (error) {
-            console.error("Ad creation failed:", error);
-            alert("❌ Failed to create ad.");
-        }
-    };
+    // const handleAdCreate = async () => {
+    //     try {
+    //         await axios.post(`${API_BASE}/ads`, adForm);
+    //         setAdForm({ title: '', image: '', link: '' });
+    //         await fetchData();
+    //         alert("✅ Ad created successfully!");
+    //     } catch (error) {
+    //         console.error("Ad creation failed:", error);
+    //         alert("❌ Failed to create ad.");
+    //     }
+    // };
 
-    const handleDelete = async (type, id) => {
-        try {
-            await axios.delete(`${API_BASE}/${type}/${id}`);
-            await fetchData();
-            alert("🗑️ Item deleted successfully!");
-        } catch (error) {
-            console.error("Delete failed:", error);
-            alert("❌ Failed to delete item.");
-        }
-    };
+    // const handleDelete = async (type, id) => {
+    //     try {
+    //         await axios.delete(`${API_BASE}/${type}/${id}`);
+    //         await fetchData();
+    //         alert("🗑️ Item deleted successfully!");
+    //     } catch (error) {
+    //         console.error("Delete failed:", error);
+    //         alert("❌ Failed to delete item.");
+    //     }
+    // };
 
 
     return (
         <div className="min-h-screen bg-gray-100 p-8">
             <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Admin Dashboard</h1>
 
-            {/* Products Section */}
+            <section className=' w-full flex justify-around align-center py-10'>
+                <NavLink to="products" className='w-[200px] h-[200px] bg-blue-200 flex justify-center items-center rounded-xl'>Products</NavLink>
+                <NavLink to="ads" className='w-[200px] h-[200px] bg-blue-200 flex justify-center items-center rounded-xl'>Ads</NavLink>
+                <NavLink to="users" className='w-[200px] h-[200px] bg-blue-200 flex justify-center items-center rounded-xl'>Users</NavLink>
+                <NavLink to="sales" className='w-[200px] h-[200px] bg-blue-200 flex justify-center items-center rounded-xl'>Sales</NavLink>
+            </section>
+
+            <section className=' w-full bg-white flex flex-col justify-around align-center p-6 mb-10 shadow-md rounded-md'>
+                <h2 className="text-xl font-semibold mb-4 text-blue-600">🛍️Orders on Queue</h2>
+                    {Array.isArray(sales) && sales.length > 0 ? (
+                        sales.map(sale => (
+                            <li key={sale._id} className="flex justify-between items-center bg-gray-50 p-3 rounded-md shadow-sm">
+                                <div>
+                                    <strong>{sale.title}</strong>
+                                    <p className="text-sm text-gray-500">{sale.link}</p>
+                                </div>
+                                <button onClick={() => handleDelete('sales', sale._id)} className="text-red-500 hover:underline">Delete</button>
+                            </li>
+                        ))
+                    ) : (
+                        <h3 className="text-gray-500">No Sales found</h3>
+                    )}
+            </section>
+
+            <section className=' w-full bg-white flex flex-col justify-around align-center p-6 mb-10 shadow-md rounded-md'>
+                <h2 className="text-xl font-semibold mb-4 text-blue-600">🛍️Orders Packed</h2>
+                    {Array.isArray(sales) && sales.length > 0 ? (
+                        sales.map(sale => (
+                            <li key={sale._id} className="flex justify-between items-center bg-gray-50 p-3 rounded-md shadow-sm">
+                                <div>
+                                    <strong>{sale.title}</strong>
+                                    <p className="text-sm text-gray-500">{sale.link}</p>
+                                </div>
+                                <button onClick={() => handleDelete('sales', sale._id)} className="text-red-500 hover:underline">Delete</button>
+                            </li>
+                        ))
+                    ) : (
+                        <h3 className="text-gray-500">No Sales found</h3>
+                    )}
+            </section>
+
+            <section className=' w-full bg-white flex flex-col justify-around align-center p-6 mb-10 shadow-md rounded-md'>
+                <h2 className="text-xl font-semibold mb-4 text-blue-600">🛍️Orders on Way</h2>
+                    {Array.isArray(sales) && sales.length > 0 ? (
+                        sales.map(sale => (
+                            <li key={sale._id} className="flex justify-between items-center bg-gray-50 p-3 rounded-md shadow-sm">
+                                <div>
+                                    <strong>{sale.title}</strong>
+                                    <p className="text-sm text-gray-500">{sale.link}</p>
+                                </div>
+                                <button onClick={() => handleDelete('sales', sale._id)} className="text-red-500 hover:underline">Delete</button>
+                            </li>
+                        ))
+                    ) : (
+                        <h3 className="text-gray-500">No Sales found</h3>
+                    )}
+            </section>
+
+            <section className=' w-full bg-white flex flex-col justify-around align-center p-6 mb-10 shadow-md rounded-md'>
+                <h2 className="text-xl font-semibold mb-4 text-blue-600">🛍️Orders delivered</h2>
+                    {Array.isArray(sales) && sales.length > 0 ? (
+                        sales.map(sale => (
+                            <li key={sale._id} className="flex justify-between items-center bg-gray-50 p-3 rounded-md shadow-sm">
+                                <div>
+                                    <strong>{sale.title}</strong>
+                                    <p className="text-sm text-gray-500">{sale.link}</p>
+                                </div>
+                                <button onClick={() => handleDelete('sales', sale._id)} className="text-red-500 hover:underline">Delete</button>
+                            </li>
+                        ))
+                    ) : (
+                        <h3 className="text-gray-500">No Sales found</h3>
+                    )}
+            </section>
+{/* 
+            Products Section 
             <section className="bg-white shadow-md rounded-lg p-6 mb-10">
                 <h2 className="text-xl font-semibold mb-4 text-blue-600">🛍️ Manage Products</h2>
                 <form className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -106,7 +183,7 @@ const Admin = () => {
 
             </section>
 
-            {/* Ads Section */}
+            Ads Section
             <section className="bg-white shadow-md rounded-lg p-6">
                 <h2 className="text-xl font-semibold mb-4 text-green-600">📢 Manage Ads</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -150,7 +227,7 @@ const Admin = () => {
                     )}
                 </ul>
 
-            </section>
+            </section> */}
         </div>
     );
 };
