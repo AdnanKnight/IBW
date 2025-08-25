@@ -2,6 +2,7 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "axios": "^1.11.0",
+    "jsonwebtoken": "^9.0.2",
     "multer": "^2.0.2",
     "swiper": "^11.2.10"
   }

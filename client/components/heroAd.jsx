@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import Pic1 from '../src/assets/selected/10.png'
+import Pic2 from '../src/assets/selected/14.png'
+// import Pic1 from '../src/assets/selected/10.png'
+
 const HeroAd = () => {
     const [ads, setAds] = useState([]);
     const API_BASE = "http://localhost:5555/api";
@@ -49,12 +53,13 @@ const HeroAd = () => {
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <div className="rounded-xl overflow-hidden bg-gray-400">
+                    <div className="rounded-xl overflow-hidden position-relative bg-[var(--yellow)] p-2">
                         <img
-                            src={ads[3]?.image}
+                            src={Pic1}
                             alt={ads[3]?.title}
                             className="w-full h-full object-cover"
                         />
+                        <button className="position-absolute z-2 p-2 bg-white rounded-xl">Buy Now</button>
                     </div>
                 </div>
             </div>

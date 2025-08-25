@@ -60,7 +60,7 @@ const ProductPage = () => {
         }
 
         new Swiper(el, {
-            loop: false,
+            loop: true,
             slidesPerView: 1,
             spaceBetween: 10,
             navigation: {
@@ -110,8 +110,8 @@ const ProductPage = () => {
                 {/* Product Info */}
                 <div className="flex flex-col justify-between space-y-6">
                     <div>
-                        <h1 className="text-4xl font-bold text-gray-800">{product.name || 'Unnamed Product'}</h1>
-                        <p className="text-2xl font-semibold text-green-600 mt-2">₹{product.price || 'N/A'}</p>
+                        <h1 className="text-4xl font-bold text-[var(--gray)]">{product.name || 'Unnamed Product'}</h1>
+                        <p className="text-2xl font-semibold text-gray-700 mt-2">₹{product.price || 'N/A'}</p>
                     </div>
 
                     <button className="w-full md:w-48 px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">

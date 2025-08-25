@@ -21,21 +21,21 @@ const Contact = () => {
               <h2 className="text-xl font-semibold mb-2">Our Office</h2>
               <p className="text-gray-600">
                 Islamic Book World (IBW) <br />
-                123 Crescent Road, Green Park <br />
-                New Delhi, India 110016
+                1st Floor, Shop no.2660, Kucha Chellan<br />
+                DaryaGanj, New-Delhi, India 110016
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-2">Phone</h2>
-              <p className="text-gray-600">+91 98765 43210</p>
-              <p className="text-gray-600">+91 91234 56789</p>
+              <p className="text-gray-600">+91 78271 78106</p>
+              <p className="text-gray-600">+91 86381 49677</p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-2">Email</h2>
-              <p className="text-gray-600">info@ibwbooks.com</p>
-              <p className="text-gray-600">support@ibwbooks.com</p>
+              <p className="text-gray-600">islamicbookworld.official@gmail.com</p>
+              <p className="text-gray-600"></p>
             </div>
           </div>
 

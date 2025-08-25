@@ -1,15 +1,41 @@
 import React, { useState } from 'react';
+import axios from "axios";
 
 const AuthPage = () => {
     const [activeTab, setActiveTab] = useState('login');
     const [loginForm, setLoginForm] = useState({ email: '', password: '' });
     const [signupForm, setSignupForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
 
-    const handleLoginSubmit = (e) => {
+    // Login submit
+    const handleLoginSubmit = async (e) => {
         e.preventDefault();
-        console.log('Login Data:', loginForm);
+        if (!loginForm.email || !loginForm.password) {
+            alert("Please fill all required fields");
+            return;
+        }
+        try {
+            const res = await axios.post(
+                "http://localhost:5555/api/auth/login",
+                {
+                    email: loginForm.email,
+                    password: loginForm.password
+                },
+                { withCredentials: true } // allow cookies
+            );
+
+            if (res.data.success) {
+                window.location.href = '/';
+            } else {
+                alert(res.data.message || "Failed to login");
+            }
+
+        } catch (err) {
+            console.error(err);
+            alert(err.response?.data?.message || "Failed to login");
+        }
     };
 
+    // Signup submit
     const handleSignupSubmit = async (e) => {
         e.preventDefault();
         if (!signupForm.name || !signupForm.email || !signupForm.password) {
@@ -21,11 +47,22 @@ const AuthPage = () => {
             return;
         }
         try {
-            const res = await axios.post("http://localhost:5555/api/auth/signup", {
-                name: signupForm.name,
-                email: signupForm.email,
-                password: signupForm.passwor
-            })
+            const res = await axios.post(
+                "http://localhost:5555/api/auth/signup",
+                {
+                    name: signupForm.name,
+                    email: signupForm.email,
+                    password: signupForm.password
+                },
+                { withCredentials: true } // allow cookies
+            );
+
+            if (res.data.success) {
+                window.location.href = '/';
+            } else {
+                alert(res.data.message || "Failed to sign up");
+            }
+
         } catch (err) {
             console.error(err);
             alert(err.response?.data?.message || "Failed to sign up");
@@ -59,18 +96,18 @@ const AuthPage = () => {
                 <div className="space-y-6">
                     {activeTab === 'login' ? (
                         <form onSubmit={handleLoginSubmit} className="space-y-5">
-                            <Input label="Email" type="email" value={loginForm.email} onChange={e => setLoginForm({ ...loginForm, email: e.target.value })} placeholder="you@example.com" />
-                            <Input label="Password" type="password" value={loginForm.password} onChange={e => setLoginForm({ ...loginForm, password: e.target.value })} placeholder="********" />
+                            <Input autocomplete="email" label="Email" type="email" value={loginForm.email} onChange={e => setLoginForm({ ...loginForm, email: e.target.value })} placeholder="you@example.com" />
+                            <Input autocomplete="current-password" label="Password" type="password" value={loginForm.password} onChange={e => setLoginForm({ ...loginForm, password: e.target.value })} placeholder="********" />
                             <button type="submit" className="w-full py-3 bg-blue-600 text-white rounded-xl shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
                                 Login
                             </button>
                         </form>
                     ) : (
                         <form onSubmit={handleSignupSubmit} className="space-y-5">
-                            <Input label="Full Name" type="text" value={signupForm.name} onChange={e => setSignupForm({ ...signupForm, name: e.target.value })} placeholder="John Doe" />
-                            <Input label="Email" type="email" value={signupForm.email} onChange={e => setSignupForm({ ...signupForm, email: e.target.value })} placeholder="you@example.com" />
-                            <Input label="Password" type="password" value={signupForm.password} onChange={e => setSignupForm({ ...signupForm, password: e.target.value })} placeholder="********" />
-                            <Input label="Confirm Password" type="password" value={signupForm.confirmPassword} onChange={e => setSignupForm({ ...signupForm, confirmPassword: e.target.value })} placeholder="********" />
+                            <Input autocomplete="name" label="Full Name" type="text" value={signupForm.name} onChange={e => setSignupForm({ ...signupForm, name: e.target.value })} placeholder="John Doe" />
+                            <Input autocomplete="email" label="Email" type="email" value={signupForm.email} onChange={e => setSignupForm({ ...signupForm, email: e.target.value })} placeholder="you@example.com" />
+                            <Input autocomplete="new-password" label="Password" type="password" value={signupForm.password} onChange={e => setSignupForm({ ...signupForm, password: e.target.value })} placeholder="********" />
+                            <Input autocomplete="new-password" label="Confirm Password" type="password" value={signupForm.confirmPassword} onChange={e => setSignupForm({ ...signupForm, confirmPassword: e.target.value })} placeholder="********" />
                             <button type="submit" className="w-full py-3 bg-green-600 text-white rounded-xl shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
                                 Sign Up
                             </button>
@@ -94,7 +131,7 @@ const AuthPage = () => {
 };
 
 // Reusable input component
-const Input = ({ label, type, value, onChange, placeholder }) => (
+const Input = ({ label, type, value, onChange, placeholder, autocomplete }) => (
     <div className="flex flex-col space-y-1">
         <label className="text-sm font-medium text-gray-600">{label}</label>
         <input
@@ -102,6 +139,7 @@ const Input = ({ label, type, value, onChange, placeholder }) => (
             value={value}
             onChange={onChange}
             placeholder={placeholder}
+            autoComplete={autocomplete} // ✅ Corrected
             className="border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm transition"
             required
         />

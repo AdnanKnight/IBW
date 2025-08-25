@@ -59,15 +59,15 @@ const Footer = () => {
                     <ul className="space-y-3 text-sm">
                         <li className="flex items-center gap-2">
                             <HomeIcon className="w-5 h-5 text-green-500" />
-                            New Delhi, India 110016
+                            2660, Kucha Chellan, DaryaGanj, New-Delhi, Pin-110002
                         </li>
                         <li className="flex items-center gap-2">
                             <PhoneIcon className="w-5 h-5 text-green-500" />
-                            +91 98765 43210
+                            +91 78271 78106
                         </li>
                         <li className="flex items-center gap-2">
                             <EnvelopeIcon className="w-5 h-5 text-green-500" />
-                            support@ibwbooks.com
+                            islamicbookworld.official@gmail.com
                         </li>
                     </ul>
                 </div>
