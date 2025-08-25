@@ -10,6 +10,9 @@ import AdminLayout from '../layouts/adminLayout'
 
 // Pages
 import Home from '../pages/home';
+import AuthPage from '../pages/authPage';
+import About from '../pages/about';
+import Contact from '../pages/contact';
 import ProductPage from '../pages/productPage';
 import UserDashBoard from '../pages/userDashboard'
 
@@ -31,6 +34,8 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path='dashboard' element={<UserDashBoard />} />
+          <Route path='about' element={<About />} />
+          <Route path='Contact' element={<Contact />} />
           <Route path='*' element={<ErrorPage />} />
         </Route>
 
@@ -46,6 +51,7 @@ function App() {
           <Route path='*' element={<ErrorAdmin />} />
         </Route>
 
+        <Route path='/auth' element={<AuthPage />} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
     </>

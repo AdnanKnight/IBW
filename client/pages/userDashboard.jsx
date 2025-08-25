@@ -1,56 +1,107 @@
-import React from 'react'
+import React from "react";
+import { NavLink } from 'react-router-dom'
+import DefaultAvatar from "../src/assets/defaults/default-avatar.jpg";
 
-/*                                              IMAGES                                                     */
-import DefaultAvatar from '../src/assets/defaults/default-avatar.jpg'
-
-const userDashboard = () => {
+const UserDashboard = () => {
     return (
-        <div className='py-10 px-7'>
-            <div className='profileSection'>
-                <div id='user-details' className='w-[49%] h-[30dvh] bg-gray-200 rounded-xl flex justify-around items-center px-15'>
-                    <img src={DefaultAvatar} alt="user Image" className='w-[200px] h-[200px] rounded-[50%] bg-gray-200 text-center object-cover' />
-                    <span>
-                        <h3 className='text-3xl font-bold'>Welcome back,</h3>
-                        <h3 className='text-xl'>UserName</h3>
-                    </span>
+        <main className="bg-gradient-to-b from-white to-gray-100 min-h-screen text-gray-800">
+            <section className="max-w-6xl mx-auto px-6 py-12 md:py-20 space-y-12">
+                {/* Hero/Profile */}
+                <div className="text-center">
+                    <img
+                        src={DefaultAvatar}
+                        alt="User Avatar"
+                        className="w-32 h-32 rounded-full object-cover mx-auto border-4 border-blue-200"
+                    />
+                    <h1 className="text-4xl md:text-5xl font-extrabold mt-4">Welcome back, UserName</h1>
+                    <p className="text-lg text-gray-600 mt-2">
+                        Here’s a quick overview of your account.
+                    </p>
                 </div>
-                <div className='w-[49%] h-[30dvh] bg-gray-200 rounded-xl flex flex-col justify-center items-start gap-7 px-15'>
-                    <span>
-                        <h3 className='text-2xl font-bold mb-2'>Your Address:</h3>
-                        <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam culpa, ab consectetur inventore architecto impedit.</h3>
-                    </span>
-                    <span>
-                        <h3 className='text-2xl font-bold mb-2'>Your Billing number:</h3>
-                        <h3>+1 123 456 7890</h3>
-                        <h3>+1 123 456 7890</h3>
-                    </span>
-                </div>
-            </div>
-            <div className="orderSection mt-10 py-10 px-15 bg-gray-200 rounded-xl" id='cart'>
-                <h3 className='text-2xl font-bold mb-5'>Cart</h3>
-                <div className="orderList w-full flex flex-col gap-[15px]">
-                    <li className='w-full flex justify-between border-[1px] border-[var(--accent-dark)] py-3 px-2 rounded-lg'>Order No. 1 <span>total-Items</span> <span>Total-price</span></li>
-                    <li className='w-full flex justify-between border-[1px] border-[var(--accent-dark)] py-3 px-2 rounded-lg'>Order No. 2 <span>total-Items</span> <span>Total-price</span></li>
-                    <li className='w-full flex justify-between border-[1px] border-[var(--accent-dark)] py-3 px-2 rounded-lg'>Order No. 3 <span>total-Items</span> <span>Total-price</span></li>
-                </div>
-            </div>
-            <div className="orderSection mt-10 py-10 px-15 bg-gray-200 rounded-xl" id='previous-orders'>
-                <h3 className='text-2xl font-bold mb-5'>Previous Orders</h3>
-                <div className="orderList w-full flex flex-col gap-[15px]">
-                    <li className='w-full flex justify-between border-[1px] border-[var(--accent-dark)] py-3 px-2 rounded-lg'>Order No. 1 <span>total-Items</span> <span>Total-price</span></li>
-                    <li className='w-full flex justify-between border-[1px] border-[var(--accent-dark)] py-3 px-2 rounded-lg'>Order No. 2 <span>total-Items</span> <span>Total-price</span></li>
-                    <li className='w-full flex justify-between border-[1px] border-[var(--accent-dark)] py-3 px-2 rounded-lg'>Order No. 3 <span>total-Items</span> <span>Total-price</span></li>
-                </div>
-            </div>
-            <div className="orderSection mt-10 py-10 px-15 bg-gray-200 rounded-xl" id='contact-support-team'>
-                <h3 className='text-2xl font-bold mb-5'>Contact Support Team</h3>
-                <div className="orderList flex flex-col gap-[10px]">
-                    <li>Email - support@gmail.com</li>
-                    <li>Phone no. +91-12345-67890</li>
-                </div>
-            </div>
-        </div>
-    )
-}
 
-export default userDashboard
+                {/* Address & Billing */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="bg-white p-6 rounded-lg shadow space-y-3">
+                        <h2 className="text-xl font-semibold">Your Address</h2>
+                        <p className="text-gray-600">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                            culpa, ab consectetur inventore architecto impedit.
+                        </p>
+                    </div>
+
+                    <div className="bg-white p-6 rounded-lg shadow space-y-3">
+                        <h2 className="text-xl font-semibold">Billing Numbers</h2>
+                        <p className="text-gray-600">+1 123 456 7890</p>
+                        <p className="text-gray-600">+1 987 654 3210</p>
+                    </div>
+                </div>
+
+                {/* Cart */}
+                <div className="bg-white p-8 rounded-lg shadow">
+                    <h2 className="text-2xl font-bold mb-4">Cart</h2>
+                    <ul className="space-y-3">
+                        <li className="flex justify-between border border-[var(--accent-light)] rounded-lg px-4 py-2 text-gray-700">
+                            <span>Order No. 1</span> <span>Total-Items</span>{" "}
+                            <span>$Total-price</span>
+                        </li>
+                        <li className="flex justify-between border border-[var(--accent-light)] rounded-lg px-4 py-2 text-gray-700">
+                            <span>Order No. 2</span> <span>Total-Items</span>{" "}
+                            <span>$Total-price</span>
+                        </li>
+                        <li className="flex justify-between border border-[var(--accent-light)] rounded-lg px-4 py-2 text-gray-700">
+                            <span>Order No. 3</span> <span>Total-Items</span>{" "}
+                            <span>$Total-price</span>
+                        </li>
+                    </ul>
+                </div>
+
+                {/* Previous Orders */}
+                <div className="bg-white p-8 rounded-lg shadow">
+                    <h2 className="text-2xl font-bold mb-4">Previous Orders</h2>
+                    <ul className="space-y-3">
+                        <li className="flex justify-between border border-[var(--accent-light)] rounded-lg px-4 py-2 text-gray-700">
+                            <span>Order No. 1</span> <span>Total-Items</span>{" "}
+                            <span>$Total-price</span>
+                        </li>
+                        <li className="flex justify-between border border-[var(--accent-light)] rounded-lg px-4 py-2 text-gray-700">
+                            <span>Order No. 2</span> <span>Total-Items</span>{" "}
+                            <span>$Total-price</span>
+                        </li>
+                        <li className="flex justify-between border border-[var(--accent-light)] rounded-lg px-4 py-2 text-gray-700">
+                            <span>Order No. 3</span> <span>Total-Items</span>{" "}
+                            <span>$Total-price</span>
+                        </li>
+                    </ul>
+                </div>
+
+                {/* Contact Support (Same as Contact Page style) */}
+                <NavLink 
+                    to="/contact"
+                    className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="bg-white p-6 rounded-lg shadow">
+                        <h2 className="text-xl font-semibold mb-2">Our Office</h2>
+                        <p className="text-gray-600">
+                            Islamic Book World (IBW) <br />
+                            123 Crescent Road, Green Park <br />
+                            New Delhi, India 110016
+                        </p>
+                    </div>
+
+                    <div className="bg-white p-6 rounded-lg shadow">
+                        <h2 className="text-xl font-semibold mb-2">Phone</h2>
+                        <p className="text-gray-600">+91 98765 43210</p>
+                        <p className="text-gray-600">+91 91234 56789</p>
+                    </div>
+
+                    <div className="bg-white p-6 rounded-lg shadow">
+                        <h2 className="text-xl font-semibold mb-2">Email</h2>
+                        <p className="text-gray-600">info@ibwbooks.com</p>
+                        <p className="text-gray-600">support@ibwbooks.com</p>
+                    </div>
+                </NavLink>
+            </section>
+        </main>
+    );
+};
+
+export default UserDashboard;

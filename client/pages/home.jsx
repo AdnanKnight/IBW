@@ -7,17 +7,18 @@ import Products from '../components/products'
 
 const home = () => {
 
-    const [product, setProduct] = useState([])
-
-
     return (
-        <div className='py-10 px-7'>
-            
+        <section className='p-7'>
+
+            <h1 className="text-4xl md:text-4xl font-extrabold leading-tight mb-4 font-[var(--apple)]">
+                Islamic Book World — 
+            </h1>
+
             <HeroAd />
 
             <Products />
-            
-        </div>
+
+        </section>
     )
 }
 
