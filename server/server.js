@@ -2,6 +2,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
+const cookieParser = require('cookie-parser')
 const path = require('path');
 const cors = require('cors')
 require('dotenv').config()
@@ -34,8 +35,8 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
-
-
+app.use(cookieParser())
+ 
 // ✅ NEW: Serve uploaded images statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

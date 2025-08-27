@@ -1,10 +1,32 @@
 // Import packages
-import { NavLink  } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import axios from 'axios'
 
 // Icons
 import IBW from '../src/assets/icons/IBW.png'
 
 const Sidebar = () => {
+
+    const logoutHandler = async (e) => {
+        e.preventDefault()
+
+        try {
+            let res = await axios.post("/api/auth/logout", {}, { withCredentials: true })
+
+            if (res.data.success === true) {
+                window.location.href = "/auth";
+            }
+            else {
+                alert(res.data.message)
+                window.location.href = "/auth";
+            }
+        }
+        catch (err) {
+            console.error("Logout error:", err);
+            alert("Something went wrong during logout.");
+        }
+    }
+
     return (
         <nav className='sideBar'>
             <NavLink to="/">
@@ -57,9 +79,13 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li className="flex justify-center">
-                    <NavLink to="/logout" className="sideTiles bg-[var(--blue)] text-white font-[500]">
+                    <button
+                        type="submit"
+                        className="sideTiles bg-[var(--blue)] text-white font-[500]"
+                        onClick={logoutHandler}
+                    >
                         Log Out
-                    </NavLink>
+                    </button>
                 </li>
             </ul>
         </nav>
