@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import DefaultPlaceholder from '../src/assets/defaults/default-placeholder.webp';
 
-const API_ORIGIN = 'http://localhost:5555';
+const API_ORIGIN = import.meta.env.VITE_API_BASE_URL;
 const API_BASE = `${API_ORIGIN}/api`;
 const UPLOADS_BASE = `${API_ORIGIN}/uploads`;
 
