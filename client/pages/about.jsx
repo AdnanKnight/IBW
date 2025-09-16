@@ -1,14 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-/**
- * About.jsx
- *
- * A responsive, accessible "About" page component for IBW (Islamic Book World).
- * - Uses Tailwind CSS classes (adjust if you use different styling).
- * - Self-contained copy: mission, services (books, boxes, printed goods), values, contact CTA.
- * - Replace placeholder images/links with your real assets as needed.
- */
+// Img
+import Img18 from '../src/assets/selected/18.png'
 
 const About = () => {
     return (
@@ -47,7 +41,7 @@ const About = () => {
                     <div className="rounded-xl overflow-hidden shadow-lg">
                         {/* Replace with a brand photograph or product collage */}
                         <img
-                            src="https://via.placeholder.com/900x600?text=IBW+Products+%7C+Books+%26+Boxes"
+                            src={Img18}
                             alt="IBW product collage: books and custom boxes"
                             className="w-full h-64 md:h-80 object-cover bg-gray-200"
                         />

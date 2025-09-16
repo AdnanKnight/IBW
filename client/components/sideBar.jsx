@@ -1,31 +1,62 @@
 // Import packages
-import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+
+
+// Env
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // Icons
 import IBW from '../src/assets/icons/IBW.png'
 
 const Sidebar = () => {
+    // Variable
+    const navigate = useNavigate()
+    const [userOnline, setUserOnline] = useState(null)
 
     const logoutHandler = async (e) => {
         e.preventDefault()
 
         try {
-            let res = await axios.post("/api/auth/logout", {}, { withCredentials: true })
+            let res = await axios.post(`${BASE_URL}/api/auth/logout`, {}, { withCredentials: true })
 
             if (res.data.success === true) {
-                window.location.href = "/auth";
+                navigate("/auth");
+                await authChecker();
             }
             else {
                 alert(res.data.message)
-                window.location.href = "/auth";
+                navigate("/auth");
+                await authChecker();
             }
         }
         catch (err) {
             console.error("Logout error:", err);
             alert("Something went wrong during logout.");
+            await authChecker();
         }
     }
+
+    const authChecker = async () => {
+        try {
+            let res = await axios.get(`${BASE_URL}/api/auth/check`, { withCredentials: true })
+
+            if (res.data.userOnline === false) {
+                setUserOnline(false)
+            }
+            else {
+                setUserOnline(true)
+            }
+        }
+        catch (err) {
+            console.log(err.message)
+        }
+    }
+
+    useEffect(() => {
+        authChecker()
+    }, [])
 
     return (
         <nav className='sideBar'>
@@ -79,13 +110,25 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li className="flex justify-center">
-                    <button
-                        type="submit"
-                        className="sideTiles bg-[var(--blue)] text-white font-[500]"
-                        onClick={logoutHandler}
-                    >
-                        Log Out
-                    </button>
+                    {userOnline === null ? null : (
+                        userOnline ? (
+                            <button
+                                type="submit"
+                                className="sideTiles bg-[var(--blue)] text-white font-[500]"
+                                onClick={logoutHandler}
+                            >
+                                Log Out
+                            </button>
+                        ) : (
+                            <NavLink
+                                to="/auth"
+                                className="sideTiles bg-[var(--blue)] text-white font-[500]"
+                            >
+                                Log in
+                            </NavLink>
+                        )
+                    )}
+
                 </li>
             </ul>
         </nav>

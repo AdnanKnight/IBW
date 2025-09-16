@@ -82,3 +82,14 @@ exports.logout = async (req, res, next) => {
         res.status(500).json({ success: false, message: 'Failed to logout' });
     }
 }
+
+exports.authCheck = async (req, res, next) => {
+    let token = req.cookies?.token
+
+    if (!token) {
+        return res.json({userOnline: false, message: "You are currently not signedin or haven't signedup yet."})
+    }
+    else {
+        return res.json({userOnline: true, message: "You are loggedIn and Online."})
+    }
+}

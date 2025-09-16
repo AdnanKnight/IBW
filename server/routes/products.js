@@ -18,14 +18,20 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// === Routes ===
-router.get('/', controller.getAll);
+// Read Product
+router.get('/read', controller.getAll);
 
-// ✅ Use Multer middleware for image upload
-router.post('/', upload.array('images', 10), controller.create); // Up to 10 images
+// Create Product
+router.post('/create', controller.create); // Up to 10 images
 
-router.put('/:id', controller.update); // You can enhance this later with file support
-router.delete('/:id', controller.remove);
+// Update Product
+router.put('/update/:id', controller.update); // You can enhance this later with file support
+
+// Delete Product
+router.delete('/delete/:id', controller.remove);
+
+
+// Read Individual Product
 router.get('/:id', controller.getProductById);
 
 module.exports = router;

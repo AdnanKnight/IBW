@@ -14,5 +14,7 @@ Router.post('/api/auth/login', controller.login);
 // Logout
 Router.post('/api/auth/logout', controller.logout)
 
+// authChecker 
+Router.get('/api/auth/check', controller.authCheck)
 
 module.exports = Router;
