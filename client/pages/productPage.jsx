@@ -7,7 +7,7 @@ import 'swiper/swiper-bundle.css';
 import Products from '../components/products';
 import DefaultAvatar from '../src/assets/defaults/default-avatar.jpg';
 
-const API_ORIGIN = "http://localhost:5555";
+const API_ORIGIN = import.meta.env.VITE_API_BASE_URL;
 const API_BASE = `${API_ORIGIN}/api`;
 const UPLOADS_BASE = `${API_ORIGIN}/uploads`;
 
