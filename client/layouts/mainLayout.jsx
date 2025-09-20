@@ -13,6 +13,7 @@ const MainLayout = () => {
             <div className='sideBarContainer'>
                 <SideBar />
             </div>
+            {/* something needs to be changed here maybe bring the navbar and sidebar code here*/}
 
             {/* Scrollable Content */}
             <div className='navContentAndFooterContainer'>
