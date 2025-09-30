@@ -29,7 +29,7 @@ const PORT = process.env.PORT
 
 // Middlewares
 const corsOptions = {
-    origin: "https://ibw-frontend.onrender.com", // frontend URL
+    origin: ["https://ibw-frontend.onrender.com", "http://localhost:5173"], // frontend URL
     credentials: true,               // allow cookies to be sent
 };
 app.use(express.json());
