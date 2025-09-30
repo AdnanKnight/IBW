@@ -15,6 +15,7 @@ const resolveImageUrl = (img) => {
 };
 
 const Products = () => {
+    
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
