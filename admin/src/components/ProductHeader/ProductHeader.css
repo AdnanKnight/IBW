@@ -1,0 +1,64 @@
+h1 {
+    font-size: 2.5vw;
+
+    margin-left: 30px;
+}
+
+.product-actions {
+    width: 100%;
+    height: 4dvh;
+
+    margin: 20px 0px;
+
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.product-actions .tiles {
+    width: 100%;
+    height: 100%;
+
+    font-size: 1vw;
+
+    border: 1px solid black;
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tiles.active {
+    background-color: black;
+    color: white;
+}
+
+.product-search-bar {
+    width: 100%;
+    height: 4dvh;
+
+    margin: 10px 0px;
+
+    border: 1px solid black;
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+}
+
+.product-search-bar i {
+    font-size: 1.5vw;
+    padding: 0px 5px;
+}
+
+.product-search-bar input {
+    width: 100%;
+    height: 100%;
+
+    font-size: 1.2vw;
+
+    border: none;
+    margin-bottom: 0px;
+    border-radius: 0px 15px 15px 0px;
+    padding: 0px 20px;
+}

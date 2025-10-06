@@ -29,14 +29,14 @@ const PORT = process.env.PORT
 
 // Middlewares
 const corsOptions = {
-    origin: ["https://ibw-frontend.onrender.com", "http://localhost:5173", "http://localhost:5174"], // frontend URL
+    origin: ["https://ibw-frontend.onrender.com","https://islamicbookworld.in/", "http://localhost:5173", "http://localhost:5174"], // frontend URL
     credentials: true,               // allow cookies to be sent
 };
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
- 
+
 // ✅ NEW: Serve uploaded images statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

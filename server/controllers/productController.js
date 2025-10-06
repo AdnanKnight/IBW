@@ -40,7 +40,7 @@ exports.create = async (req, res) => {
         });
 
         await newProduct.save();
-        res.status(201).json({success: true, message: "Product created successfully."});
+        res.status(201).json({ success: true, message: "Product created successfully." });
     } catch (err) {
         console.error("Create error:", err);
         res.status(500).json({ message: "❌ Failed to create product" });
@@ -84,11 +84,11 @@ exports.update = async (req, res) => {
 // ✅ Delete product
 exports.remove = async (req, res) => {
     try {
-        await Product.findByIdAndDelete(req.params.id);
-        res.status(204).send();
+        const deleted = await Product.findByIdAndDelete(req.params.id);
+        if (!deleted) return res.status(404).json({ message: 'Product not found' });
+        res.json({ message: 'Product deleted successfully' });
     } catch (err) {
-        console.error("Delete error:", err);
-        res.status(500).json({ message: "Error deleting product" });
+        res.status(500).json({ error: err.message });
     }
 };
 
